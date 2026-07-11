@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hiroto Fujinami | 撮影と機材のプロフェッショナル</title>
+<meta name="description" content="Hiroto Fujinami — 三脚・特機のメンテナンスから現場でのオペレーション、機材選定、写真・映像制作まで。撮影に関わるあらゆる工程に対応する撮影と機材のプロフェッショナル。">
+<style>
+  @font-face {
+    font-family: 'Honoka Mincho';
+    src: url('fonts/Honoka_Shin_Mincho_L.otf') format('opentype');
+    font-weight: 300 700;
+    font-display: swap;
+  }
+
+  :root {
+    --bg: #0a0b0e;
+    --bg-alt: #101217;
+    --card: #14161c;
+    --card-border: #22252d;
+    --text: #edeff3;
+    --text-dim: #9aa0ad;
+    --accent: #8fd8c6;
+    --accent-soft: rgba(143, 216, 198, 0.1);
+    --shadow: rgba(0, 0, 0, 0.4);
+    --max-width: 900px;
+    --serif: 'Honoka Mincho', 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: radial-gradient(circle at top, var(--bg-alt), var(--bg) 65%);
+    color: var(--text);
+    font-family: var(--serif);
+    font-weight: 300;
+    line-height: 2;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    font-synthesis: none;
+  }
+
+  /* ---------- Nav ---------- */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 20;
+    display: flex;
+    justify-content: center;
+    gap: clamp(18px, 4vw, 40px);
+    padding: 20px 16px;
+    background: rgba(10, 11, 14, 0.3);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  nav a {
+    color: var(--text-dim);
+    text-decoration: none;
+    font-family: var(--serif);
+    font-size: 0.95rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    transition: color 0.25s ease;
+    white-space: nowrap;
+  }
+
+  nav a:hover {
+    color: var(--accent);
+  }
+
+  main {
+    padding: clamp(56px, 10vw, 120px) 16px clamp(72px, 10vw, 140px);
+  }
+
+  .wrap {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(56px, 9vw, 112px);
+  }
+
+  /* ---------- Fade-in animation ---------- */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 1s ease, transform 1s ease;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ---------- Eyebrow ---------- */
+  .eyebrow {
+    font-family: var(--serif);
+    font-size: 0.85rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-align: center;
+    margin-bottom: 18px;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    text-align: center;
+    padding: clamp(24px, 6vw, 64px);
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    background: var(--bg);
+  }
+
+  .hero-slideshow {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .hero-slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.8s ease;
+  }
+
+  .hero-slide.is-active {
+    opacity: 1;
+  }
+
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(10, 11, 14, 0.32) 0%, rgba(10, 11, 14, 0.5) 55%, rgba(10, 11, 14, 0.85) 100%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .name {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(2.4rem, 6vw, 4rem);
+    letter-spacing: 0.03em;
+    position: relative;
+    z-index: 2;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+  }
+
+  .divider {
+    width: 48px;
+    height: 1px;
+    background: var(--accent);
+    opacity: 0.5;
+    margin: 26px auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  .title {
+    color: var(--text);
+    font-size: clamp(0.95rem, 2vw, 1.1rem);
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    position: relative;
+    z-index: 2;
+    text-shadow: 0 2px 16px rgba(0, 0, 0, 0.5);
+  }
+
+  .tagline {
+    margin: 28px auto 0;
+    max-width: 600px;
+    color: var(--text-dim);
+    font-size: clamp(0.9rem, 1.7vw, 1rem);
+    font-weight: 300;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ---------- Card ---------- */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 24px;
+    padding: clamp(32px, 6vw, 64px);
+    box-shadow: 0 16px 50px var(--shadow);
+  }
+
+  .card h2 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(1.6rem, 3vw, 2.1rem);
+    text-align: center;
+    letter-spacing: 0.02em;
+  }
+
+  .card .lead {
+    text-align: center;
+    color: var(--text-dim);
+    margin-top: 28px;
+  }
+
+  .card p {
+    color: var(--text-dim);
+    font-size: clamp(0.92rem, 1.6vw, 1rem);
+    font-weight: 300;
+    text-align: left;
+  }
+
+  .card p + p {
+    margin-top: 20px;
+  }
+
+  .card-body {
+    margin-top: 32px;
+  }
+
+  .about-layout {
+    display: grid;
+    grid-template-columns: minmax(180px, 260px) 1fr;
+    gap: clamp(28px, 5vw, 48px);
+    align-items: start;
+    margin-top: 32px;
+  }
+
+  .about-photo {
+    aspect-ratio: 1 / 1;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid var(--card-border);
+    position: sticky;
+    top: 100px;
+  }
+
+  .about-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .about-layout .card-body {
+    margin-top: 0;
+  }
+
+  @media (max-width: 720px) {
+    .about-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .about-photo {
+      position: static;
+      max-width: 260px;
+      margin: 0 auto;
+    }
+  }
+
+  /* ---------- Contact ---------- */
+  .contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin: 32px auto 0;
+    padding: 14px 32px;
+    border-radius: 999px;
+    border: 1px solid rgba(143, 216, 198, 0.35);
+    color: var(--accent);
+    text-decoration: none;
+    font-family: var(--serif);
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    width: fit-content;
+    transition: transform 0.25s ease, background 0.25s ease;
+  }
+
+  .contact-link:hover {
+    transform: translateY(-2px);
+    background: var(--accent-soft);
+  }
+
+  .contact-wrap {
+    display: flex;
+    justify-content: center;
+  }
+
+  /* ---------- Footer ---------- */
+  footer {
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+  }
+
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: clamp(16px, 4vw, 32px);
+    margin-bottom: 18px;
+  }
+
+  .footer-links a {
+    color: var(--text-dim);
+    text-decoration: none;
+    font-family: var(--serif);
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.25s ease;
+  }
+
+  .footer-links a:hover {
+    color: var(--accent);
+  }
+</style>
+</head>
+<body>
+
+  <nav class="reveal">
+    <a href="index.html">Home</a>
+    <a href="index.html#about">About</a>
+    <a href="works.html">Works</a>
+    <a href="index.html#contact">Contact</a>
+  </nav>
+
+  <section class="hero reveal">
+    <div class="hero-slideshow">
+      <div class="hero-slide is-active" style="background-image: url('images/hero/hero-01-ainodake.jpg');"></div>
+      <div class="hero-slide" style="background-image: url('images/hero/hero-02-tenngu.jpg');"></div>
+      <div class="hero-slide" style="background-image: url('images/hero/hero-03-okama.jpg');"></div>
+      <div class="hero-slide" style="background-image: url('images/hero/hero-04-oosima.jpg');"></div>
+    </div>
+    <p class="title">撮影と機材のプロフェッショナル</p>
+    <h1 class="name">Hiroto Fujinami</h1>
+    <div class="divider"></div>
+    <p class="tagline">
+      三脚・特機のメンテナンスから現場でのオペレーション、機材選定、写真・映像制作まで。
+      撮影に関わるあらゆる工程に対応する「撮影と機材のプロフェッショナル」です。
+    </p>
+  </section>
+
+  <main>
+    <div class="wrap">
+
+      <section class="card reveal" id="about">
+        <p class="eyebrow">About</p>
+        <h2>プロフィール</h2>
+        <div class="about-layout">
+          <div class="about-photo">
+            <img src="images/profile/profile.webp" alt="Hiroto Fujinami">
+          </div>
+          <div class="card-body">
+            <p>
+              都内の機材レンタル会社で、三脚や特機（クレーン、ドリー、ジブなど特殊機材）のメンテナンス・修理を担当しています。
+              機材の内部構造や癖に日々向き合う中で培った知識を活かし、撮影現場では特機オペレーターやカメラアシスタントとして呼ばれることも多く、
+              「こんな撮影がしたいけれど、どんな機材を使えばいいか分からない」といったご相談への機材選定にも対応しています。
+            </p>
+            <p>
+              写真の大学を卒業し、写真・映像制作にも携わっています。機材を扱う技術者としての視点と、撮り手としての視点の両方を持っていることが自分の強みだと考えています。
+            </p>
+            <p>
+              近年はWordPressでのWebサイト構築にも取り組んでおり、勤務先のサイト運営に加え、父が代表を務める静岡の花業界の団体「SHiP」のサイト制作・更新や、
+              年2回開催されるイベント「GreenDay」での会場撮影も担当しています。植物や花という被写体を通して、機材の知識だけでなく撮影・Web制作までを一貫して形にする経験を積んでいます。
+            </p>
+            <p>
+              三脚・特機の技術的な知識、現場でのオペレーション経験、写真・映像としてのアウトプット。この3つを掛け合わせて、撮影に関わるあらゆる場面をサポートできることが自分の強みです。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="card reveal" id="contact">
+        <p class="eyebrow">Contact</p>
+        <h2>お問い合わせ</h2>
+        <p class="lead">撮影・機材選定・特機オペレーションのご相談は Instagram DM よりお気軽にどうぞ。</p>
+        <div class="contact-wrap">
+          <a class="contact-link" href="https://www.instagram.com/hiroto_fujinami/?hl=ja" target="_blank" rel="noopener noreferrer">Instagram で連絡する</a>
+        </div>
+      </section>
+
+      <footer class="reveal">
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="index.html#about">About</a>
+          <a href="works.html">Works</a>
+          <a href="index.html#contact">Contact</a>
+        </div>
+        <p>&copy; <span id="year"></span> Hiroto Fujinami. All rights reserved.</p>
+      </footer>
+
+    </div>
+  </main>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const revealEls = document.querySelectorAll('.reveal');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('is-visible'), i * 60);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  revealEls.forEach(el => observer.observe(el));
+
+  const slides = document.querySelectorAll('.hero-slide');
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (slides.length > 1 && !prefersReducedMotion) {
+    let current = 0;
+    setInterval(() => {
+      slides[current].classList.remove('is-active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('is-active');
+    }, 5000);
+  }
+</script>
+</body>
+</html>

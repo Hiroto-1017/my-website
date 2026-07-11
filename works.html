@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Works | Hiroto Fujinami</title>
+<meta name="description" content="Hiroto Fujinami の制作実績。登山や花火など趣味で撮った写真（Personal）、テーマ作品（Concept）、GreenDayやかっぽれといった個人依頼の写真（Commission）、携わった作品（Credits）を紹介しています。">
+<style>
+  @font-face {
+    font-family: 'Honoka Mincho';
+    src: url('fonts/Honoka_Shin_Mincho_L.otf') format('opentype');
+    font-weight: 300 700;
+    font-display: swap;
+  }
+
+  :root {
+    --bg: #0a0b0e;
+    --bg-alt: #101217;
+    --card: #14161c;
+    --card-border: #22252d;
+    --text: #edeff3;
+    --text-dim: #9aa0ad;
+    --accent: #8fd8c6;
+    --accent-soft: rgba(143, 216, 198, 0.1);
+    --shadow: rgba(0, 0, 0, 0.4);
+    --max-width: 1400px;
+    --serif: 'Honoka Mincho', 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: radial-gradient(circle at top, var(--bg-alt), var(--bg) 65%);
+    color: var(--text);
+    font-family: var(--serif);
+    font-weight: 300;
+    line-height: 2;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    font-synthesis: none;
+  }
+
+  /* ---------- Nav ---------- */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 20;
+    display: flex;
+    justify-content: center;
+    gap: clamp(18px, 4vw, 40px);
+    padding: 20px 16px;
+    background: rgba(10, 11, 14, 0.75);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  nav a {
+    color: var(--text-dim);
+    text-decoration: none;
+    font-family: var(--serif);
+    font-size: 0.95rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    transition: color 0.25s ease;
+    white-space: nowrap;
+  }
+
+  nav a:hover,
+  nav a[aria-current="page"] {
+    color: var(--accent);
+  }
+
+  main {
+    padding: clamp(120px, 16vw, 160px) 16px clamp(72px, 10vw, 140px);
+  }
+
+  .wrap {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(56px, 9vw, 112px);
+  }
+
+  /* ---------- Fade-in animation ---------- */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 1s ease, transform 1s ease;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ---------- Eyebrow ---------- */
+  .eyebrow {
+    font-family: var(--serif);
+    font-size: 0.85rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-align: center;
+    margin-bottom: 18px;
+  }
+
+  /* ---------- Page header ---------- */
+  .page-header {
+    text-align: center;
+  }
+
+  .page-header h1 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(2.2rem, 5vw, 3.2rem);
+    letter-spacing: 0.02em;
+  }
+
+  .page-header .divider {
+    width: 48px;
+    height: 1px;
+    background: var(--accent);
+    opacity: 0.5;
+    margin: 26px auto;
+  }
+
+  .page-header .tagline {
+    margin: 0 auto;
+    max-width: 560px;
+    color: var(--text-dim);
+    font-size: clamp(0.9rem, 1.7vw, 1rem);
+    font-weight: 300;
+  }
+
+  /* ---------- Card ---------- */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 24px;
+    padding: clamp(32px, 6vw, 64px);
+    box-shadow: 0 16px 50px var(--shadow);
+  }
+
+  .card h2 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(1.6rem, 3vw, 2.1rem);
+    text-align: center;
+    letter-spacing: 0.02em;
+  }
+
+  .card .lead {
+    text-align: center;
+    color: var(--text-dim);
+    max-width: 640px;
+    margin: 28px auto 0;
+    font-size: clamp(0.92rem, 1.6vw, 1rem);
+    font-weight: 300;
+  }
+
+  /* ---------- Subsections ---------- */
+  .subsection {
+    margin-top: 48px;
+  }
+
+  .subsection:first-of-type {
+    margin-top: 40px;
+  }
+
+  .subsection h3 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
+    letter-spacing: 0.04em;
+    color: var(--text);
+    text-align: left;
+    margin-bottom: 20px;
+  }
+
+  .subsection p {
+    color: var(--text-dim);
+    font-size: clamp(0.92rem, 1.6vw, 1rem);
+    font-weight: 300;
+    text-align: center;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .subsection p + p {
+    margin-top: 16px;
+  }
+
+  .subsection .works-grid,
+  .subsection .masonry-grid,
+  .subsection .even-grid,
+  .subsection > .work-photo {
+    margin-top: 28px;
+  }
+
+  .subsection--essay h3 {
+    text-align: center;
+  }
+
+  /* ---------- Works grid (placeholder / uniform) ---------- */
+  .works-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 16px;
+  }
+
+  .work-placeholder {
+    aspect-ratio: 4 / 3;
+    border-radius: 16px;
+    border: 1.5px dashed var(--card-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-dim);
+    font-family: var(--serif);
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    background: var(--bg-alt);
+    text-align: center;
+    padding: 12px;
+  }
+
+  /* ---------- Main photo (uncropped) + supporting strip ---------- */
+  .work-photo {
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--card-border);
+  }
+
+  .work-photo img {
+    width: 100%;
+    height: auto;
+    display: block;
+    cursor: zoom-in;
+  }
+
+  .photo-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-top: 16px;
+  }
+
+  @media (max-width: 560px) {
+    .photo-strip {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .photo-strip .work-placeholder {
+    aspect-ratio: 16 / 10;
+    font-size: 0.8rem;
+  }
+
+  .photo-strip .work-photo {
+    aspect-ratio: 16 / 10;
+  }
+
+  .photo-strip .work-photo img {
+    height: 100%;
+    object-fit: cover;
+    cursor: zoom-in;
+    transition: transform 0.5s ease;
+  }
+
+  .photo-strip .work-photo:hover img {
+    transform: scale(1.05);
+  }
+
+  /* intentionally shot in a 4x5 format — keep native ratio, no crop */
+  .photo-strip .work-photo.ratio-54 {
+    aspect-ratio: 5 / 4;
+  }
+
+  /* ---------- Even grid (same-ratio photos + one wide feature) ---------- */
+  .even-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+
+  .even-grid.cols-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 560px) {
+    .even-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .even-grid .work-photo {
+    aspect-ratio: 3 / 2;
+  }
+
+  .even-grid .work-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    cursor: zoom-in;
+    transition: transform 0.5s ease;
+  }
+
+  .even-grid .work-photo:hover img {
+    transform: scale(1.03);
+  }
+
+  .even-grid .work-photo.is-wide {
+    grid-column: 1 / -1;
+  }
+
+  /* ---------- Masonry grid (mixed portrait / landscape photos) ---------- */
+  .masonry-grid {
+    position: relative;
+  }
+
+  .work-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--bg-alt);
+    border: 1px solid var(--card-border);
+    transition: left 0.3s ease, top 0.3s ease, width 0.3s ease;
+  }
+
+  .work-item img,
+  .work-item video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+
+  .work-item:hover img,
+  .work-item:hover video {
+    transform: scale(1.03);
+  }
+
+  .work-item img {
+    cursor: zoom-in;
+  }
+
+  /* ---------- Lightbox ---------- */
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: clamp(24px, 6vw, 64px);
+    background: rgba(10, 11, 14, 0.92);
+    backdrop-filter: blur(6px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+
+  .lightbox.is-open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .lightbox-image {
+    max-width: 100%;
+    max-height: 82vh;
+    border-radius: 8px;
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.5);
+    cursor: zoom-out;
+  }
+
+  .lightbox-close {
+    position: absolute;
+    top: clamp(16px, 4vw, 32px);
+    right: clamp(16px, 4vw, 32px);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text);
+    font-size: 1.6rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: background 0.25s ease;
+  }
+
+  .lightbox-close:hover {
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  /* ---------- Text list (company / freelance works) ---------- */
+  .text-list {
+    list-style: none;
+    max-width: 640px;
+    margin: 28px auto 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .text-list li {
+    position: relative;
+    padding-left: 28px;
+    color: var(--text-dim);
+    font-size: clamp(0.92rem, 1.6vw, 1rem);
+    font-weight: 300;
+    text-align: left;
+  }
+
+  .text-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.9em;
+    width: 14px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .text-list li.placeholder {
+    opacity: 0.55;
+    font-style: italic;
+  }
+
+  /* ---------- Video credit cards ---------- */
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    max-width: 720px;
+    margin: 28px auto 0;
+  }
+
+  .video-card {
+    display: block;
+    text-decoration: none;
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--bg-alt);
+    border: 1px solid var(--card-border);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+
+  .video-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+  }
+
+  .video-thumb {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: #000;
+  }
+
+  .video-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+
+  .video-card:hover .video-thumb img {
+    transform: scale(1.05);
+  }
+
+  .play-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: rgba(10, 11, 14, 0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease;
+  }
+
+  .video-card:hover .play-icon {
+    background: var(--accent);
+  }
+
+  .play-icon svg {
+    width: 20px;
+    height: 20px;
+    fill: #fff;
+    margin-left: 3px;
+    transition: fill 0.3s ease;
+  }
+
+  .video-card:hover .play-icon svg {
+    fill: #0a0b0e;
+  }
+
+  .video-info {
+    padding: 16px 18px 20px;
+  }
+
+  .video-title {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 1rem;
+    color: var(--text);
+    line-height: 1.5;
+  }
+
+  .video-role {
+    margin-top: 8px;
+    font-size: 0.85rem;
+    color: var(--accent);
+    letter-spacing: 0.02em;
+  }
+
+  /* ---------- Footer ---------- */
+  footer {
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+  }
+
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: clamp(16px, 4vw, 32px);
+    margin-bottom: 18px;
+  }
+
+  .footer-links a {
+    color: var(--text-dim);
+    text-decoration: none;
+    font-family: var(--serif);
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.25s ease;
+  }
+
+  .footer-links a:hover {
+    color: var(--accent);
+  }
+</style>
+</head>
+<body>
+
+  <nav class="reveal">
+    <a href="index.html">Home</a>
+    <a href="index.html#about">About</a>
+    <a href="works.html" aria-current="page">Works</a>
+    <a href="index.html#contact">Contact</a>
+  </nav>
+
+  <main>
+    <div class="wrap">
+
+      <section class="page-header reveal">
+        <p class="eyebrow">Works</p>
+        <h1>制作実績</h1>
+        <div class="divider"></div>
+        <p class="tagline">
+          趣味の撮影からテーマ制作、企業案件まで。撮影に関わってきた仕事をテーマごとにまとめています。
+        </p>
+      </section>
+
+      <section class="card reveal" id="personal">
+        <p class="eyebrow">Personal</p>
+        <h2>趣味で撮った作品</h2>
+        <p class="lead">登山や花火など、個人的な興味から撮影してきた写真です。</p>
+        <div class="masonry-grid">
+          <div class="work-item" data-ratio="1.777"><img src="images/works/climbing/climbing-01-ainodake.jpg" alt="間ノ岳の稜線"></div>
+          <div class="work-item" data-ratio="0.667"><img src="images/works/climbing/climbing-02-houou.jpg" alt="鳳凰三山 雪原を行く登山者"></div>
+          <div class="work-item" data-ratio="0.667"><img src="images/works/climbing/climbing-03-kaikoma-1.jpg" alt="甲斐駒ヶ岳 雪山の頂"></div>
+          <div class="work-item" data-ratio="0.671"><img src="images/works/climbing/climbing-04-kaikoma-2.jpg" alt="甲斐駒ヶ岳 木々の間から望む夕景"></div>
+          <div class="work-item" data-ratio="0.652"><img src="images/works/climbing/climbing-05-kinpu.jpg" alt="金峰山 雪原を登る登山者"></div>
+          <div class="work-item" data-ratio="1.500"><img src="images/works/climbing/climbing-06-obelisk.jpg" alt="金峰山 五丈岩"></div>
+          <div class="work-item" data-ratio="1.500"><img src="images/works/climbing/climbing-07-tenngu.jpg" alt="天狗岳からの稜線と雲海"></div>
+          <div class="work-item" data-ratio="1.500"><img src="images/works/theme/theme-01-fireworks.jpg" alt="夜空に打ち上がる花火と観客のシルエット"></div>
+          <div class="work-item" data-ratio="0.669"><img src="images/works/nature/nature-01-wisteria.jpg" alt="足利フラワーパーク 藤棚"></div>
+          <div class="work-item" data-ratio="1.519"><img src="images/works/nature/nature-02-okama.jpg" alt="蔵王 御釜"></div>
+          <div class="work-item" data-ratio="0.668"><img src="images/works/nature/nature-03-shiraito.jpg" alt="白糸の滝"></div>
+          <div class="work-item" data-ratio="1.506"><img src="images/works/nature/nature-04-sakyu.jpg" alt="鳥取砂丘と日本海"></div>
+        </div>
+      </section>
+
+      <section class="card reveal" id="concept">
+        <p class="eyebrow">Concept</p>
+        <h2>テーマに基づいた作品</h2>
+        <p class="lead">テーマを持って撮影・制作してきた作品です。</p>
+
+        <div class="subsection subsection--essay">
+          <h3>地球は生きている</h3>
+          <p>
+            大学2年の後期から、火山や地震などの自然現象によって地表がむき出しになった場所——噴煙地帯や山体の「崩れ」——を撮り続けている。
+          </p>
+          <p>
+            都市で暮らしていると、自然の荒々しさや美しさに触れる機会は驚くほど少ない。だからこそ私は、自然の「美しさ」だけでなく「怖さ」、そして地球が今もなお生きているということを、写真を通して少しでも感じてもらいたいと思っている。
+          </p>
+          <p>
+            火山が噴火し、有毒なガスが植物を枯らし、溶岩や噴石が大地を抉る。それでもなお、溶岩の隙間から一粒の種が芽吹き、やがて草原になり、森になる。壊れては再生する、その繰り返しの中に、私は生と死の摂理を見た。
+          </p>
+          <p>
+            このシリーズでは、伊豆大島の噴煙地帯と、そこからやがて緑を取り戻した場所、そして静岡・大谷嶺に残る宝永地震の爪痕——大谷崩れ——を撮影した。撮り方はあえてシンプルに、風景の一部を切り取ることで、その土地が持つ静かな恐ろしさと美しさを浮かび上がらせている。
+          </p>
+          <p>
+            大学を卒業して5年以上が経った今も、このテーマへの興味は変わらない。ここに収めた写真は、私にとってかけがえのない作品だ。
+          </p>
+          <div class="work-photo"><img src="images/works/concept/concept-01-oshima-main.jpg" alt="伊豆大島 溶岩地帯とススキ"></div>
+          <div class="photo-strip">
+            <div class="work-photo"><img src="images/works/concept/concept-02-hakone-1.jpg" alt="箱根 噴煙地帯の岩肌"></div>
+            <div class="work-photo"><img src="images/works/concept/concept-03-hakone-2.jpg" alt="箱根 立ち込める噴煙"></div>
+            <div class="work-photo"><img src="images/works/concept/concept-04-hakone-3.jpg" alt="箱根 噴煙の隙間から見える岩肌"></div>
+            <div class="work-photo"><img src="images/works/concept/concept-05-rinne-1.jpg" alt="伊豆大島 三原山の火口"></div>
+            <div class="work-photo"><img src="images/works/concept/concept-06-rinne-2.jpg" alt="伊豆大島 噴煙が立ち込める斜面"></div>
+            <div class="work-photo"><img src="images/works/concept/concept-07-rinne-3.jpg" alt="伊豆大島 苔むした火口縁とカルデラ"></div>
+            <div class="work-photo ratio-54"><img src="images/works/concept/concept-08-ooyakuzure-1.jpg" alt="大谷崩れ 稜線と沢筋（モノクロ）"></div>
+            <div class="work-photo ratio-54"><img src="images/works/concept/concept-09-ooyakuzure-2.jpg" alt="大谷崩れ 崩壊した斜面（モノクロ）"></div>
+            <div class="work-photo ratio-54"><img src="images/works/concept/concept-10-ooyakuzure-3.jpg" alt="大谷崩れ V字谷の全景（モノクロ）"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card reveal" id="commission">
+        <p class="eyebrow">Commission</p>
+        <h2>個人依頼の写真</h2>
+        <p class="lead">個人的に声をかけていただいた作品です。</p>
+
+        <div class="subsection">
+          <h3>GreenDay</h3>
+          <div class="even-grid">
+            <div class="work-photo is-wide"><img src="images/works/greenday/greenday-07.jpg" alt="GreenDay 会場に揺れる鯉のぼり"></div>
+            <div class="work-photo"><img src="images/works/greenday/greenday-01.jpg" alt="GreenDay 花束を束ねる様子"></div>
+            <div class="work-photo"><img src="images/works/greenday/greenday-02.jpg" alt="GreenDay 花束を受け取り抱き合う参加者"></div>
+            <div class="work-photo"><img src="images/works/greenday/greenday-03.jpg" alt="GreenDay スタッフによる花の仕上げ"></div>
+            <div class="work-photo"><img src="images/works/greenday/greenday-04.jpg" alt="GreenDay 花を選ぶ参加者"></div>
+            <div class="work-photo"><img src="images/works/greenday/greenday-05.jpg" alt="GreenDay 花束を仕上げるスタッフ"></div>
+            <div class="work-photo"><img src="images/works/greenday/greenday-06.jpg" alt="GreenDay 完成した花束"></div>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h3>かっぽれ</h3>
+          <div class="even-grid cols-2">
+            <div class="work-photo"><img src="images/works/kappore/kappore-01.jpg" alt="かっぽれ 力強く舞う踊り手たち"></div>
+            <div class="work-photo"><img src="images/works/kappore/kappore-02.jpg" alt="かっぽれ 跳び上がる踊り手"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card reveal" id="credits">
+        <p class="eyebrow">Credits</p>
+        <h2>携わった作品</h2>
+        <p class="lead">映像・撮影の現場で携わった作品です。</p>
+        <div class="video-grid">
+          <a class="video-card" href="https://www.youtube.com/watch?v=RbEwz8KPlos" target="_blank" rel="noopener noreferrer">
+            <div class="video-thumb">
+              <img src="https://img.youtube.com/vi/RbEwz8KPlos/maxresdefault.jpg" alt="JamsCollection「ドキドキシャッターチャンス」MUSIC VIDEO">
+              <span class="play-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+              </span>
+            </div>
+            <div class="video-info">
+              <p class="video-title">JamsCollection「ドキドキシャッターチャンス」<br>MUSIC VIDEO</p>
+              <p class="video-role">Technical Director として参加</p>
+            </div>
+          </a>
+          <a class="video-card" href="https://www.youtube.com/watch?v=ZodKY317nUw" target="_blank" rel="noopener noreferrer">
+            <div class="video-thumb">
+              <img src="https://img.youtube.com/vi/ZodKY317nUw/maxresdefault.jpg" alt="BUMPドラマ【酔ってキスして覚えてない】">
+              <span class="play-icon">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+              </span>
+            </div>
+            <div class="video-info">
+              <p class="video-title">BUMPドラマ<br>【酔ってキスして覚えてない】</p>
+              <p class="video-role">撮影助手として参加</p>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <footer class="reveal">
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="index.html#about">About</a>
+          <a href="works.html">Works</a>
+          <a href="index.html#contact">Contact</a>
+        </div>
+        <p>&copy; <span id="year"></span> Hiroto Fujinami. All rights reserved.</p>
+      </footer>
+
+    </div>
+  </main>
+
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" type="button" aria-label="閉じる">&times;</button>
+    <img class="lightbox-image" id="lightbox-image" src="" alt="">
+  </div>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const revealEls = document.querySelectorAll('.reveal');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('is-visible'), i * 60);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  revealEls.forEach(el => observer.observe(el));
+
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImage = document.getElementById('lightbox-image');
+  const lightboxClose = document.querySelector('.lightbox-close');
+
+  function openLightbox(img) {
+    lightboxImage.src = img.src;
+    lightboxImage.alt = img.alt || '';
+    lightbox.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('is-open');
+    document.body.style.overflow = '';
+    lightboxImage.src = '';
+  }
+
+  document.querySelectorAll('.work-item img, .work-photo img').forEach(img => {
+    img.addEventListener('click', () => openLightbox(img));
+  });
+
+  lightbox.addEventListener('click', closeLightbox);
+  lightboxClose.addEventListener('click', closeLightbox);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && lightbox.classList.contains('is-open')) {
+      closeLightbox();
+    }
+  });
+
+  function layoutMasonry(grid) {
+    const items = Array.from(grid.querySelectorAll('.work-item'));
+    if (!items.length) return;
+
+    const gap = 14;
+    const width = grid.clientWidth;
+    let columns = 3;
+    if (width <= 560) columns = 1;
+    else if (width <= 900) columns = 2;
+
+    const colWidth = (width - gap * (columns - 1)) / columns;
+    const colHeights = new Array(columns).fill(0);
+
+    items.forEach(item => {
+      const ratio = parseFloat(item.dataset.ratio) || 1.5;
+      const itemHeight = colWidth / ratio;
+      const colIndex = colHeights.indexOf(Math.min(...colHeights));
+      const left = colIndex * (colWidth + gap);
+      const top = colHeights[colIndex];
+
+      item.style.width = colWidth + 'px';
+      item.style.height = itemHeight + 'px';
+      item.style.left = left + 'px';
+      item.style.top = top + 'px';
+
+      colHeights[colIndex] += itemHeight + gap;
+    });
+
+    grid.style.height = (Math.max(...colHeights) - gap) + 'px';
+  }
+
+  const masonryGrids = document.querySelectorAll('.masonry-grid');
+  let resizeTimer;
+
+  function layoutAllMasonryGrids() {
+    masonryGrids.forEach(layoutMasonry);
+  }
+
+  layoutAllMasonryGrids();
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(layoutAllMasonryGrids, 150);
+  });
+</script>
+</body>
+</html>
