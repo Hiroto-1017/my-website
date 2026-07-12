@@ -14,16 +14,14 @@
   }
 
   :root {
-    --bg: #0a0b0e;
-    --bg-alt: #101217;
-    --card: #14161c;
-    --card-border: #22252d;
-    --text: #edeff3;
-    --text-dim: #9aa0ad;
-    --accent: #8fd8c6;
-    --accent-soft: rgba(143, 216, 198, 0.1);
-    --shadow: rgba(0, 0, 0, 0.4);
-    --max-width: 1400px;
+    --bg: #ffffff;
+    --bg-alt: #f6f5f2;
+    --text: #171717;
+    --text-dim: #6d6d6d;
+    --accent: #4a6c8c;
+    --accent-soft: rgba(74, 108, 140, 0.08);
+    --border: #e4e2dd;
+    --max-width: 1920px;
     --serif: 'Honoka Mincho', 'Hiragino Mincho ProN', 'Yu Mincho', serif;
   }
 
@@ -38,7 +36,7 @@
   }
 
   body {
-    background: radial-gradient(circle at top, var(--bg-alt), var(--bg) 65%);
+    background: var(--bg);
     color: var(--text);
     font-family: var(--serif);
     font-weight: 300;
@@ -58,17 +56,17 @@
     display: flex;
     justify-content: center;
     gap: clamp(18px, 4vw, 40px);
-    padding: 20px 16px;
-    background: rgba(10, 11, 14, 0.75);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 22px 16px;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
   }
 
   nav a {
     color: var(--text-dim);
     text-decoration: none;
     font-family: var(--serif);
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     transition: color 0.25s ease;
@@ -81,7 +79,7 @@
   }
 
   main {
-    padding: clamp(120px, 16vw, 160px) 16px clamp(72px, 10vw, 140px);
+    padding: clamp(120px, 14vw, 160px) clamp(20px, 3vw, 48px) clamp(72px, 10vw, 140px);
   }
 
   .wrap {
@@ -89,7 +87,7 @@
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: clamp(56px, 9vw, 112px);
+    gap: clamp(72px, 9vw, 128px);
   }
 
   /* ---------- Fade-in animation ---------- */
@@ -130,7 +128,7 @@
     width: 48px;
     height: 1px;
     background: var(--accent);
-    opacity: 0.5;
+    opacity: 0.6;
     margin: 26px auto;
   }
 
@@ -142,16 +140,8 @@
     font-weight: 300;
   }
 
-  /* ---------- Card ---------- */
-  .card {
-    background: var(--card);
-    border: 1px solid var(--card-border);
-    border-radius: 24px;
-    padding: clamp(32px, 6vw, 64px);
-    box-shadow: 0 16px 50px var(--shadow);
-  }
-
-  .card h2 {
+  /* ---------- Section ---------- */
+  .section h2 {
     font-family: var(--serif);
     font-weight: 500;
     font-size: clamp(1.6rem, 3vw, 2.1rem);
@@ -159,7 +149,7 @@
     letter-spacing: 0.02em;
   }
 
-  .card .lead {
+  .section .lead {
     text-align: center;
     color: var(--text-dim);
     max-width: 640px;
@@ -168,13 +158,21 @@
     font-weight: 300;
   }
 
+  .section > .eyebrow,
+  .section > h2,
+  .section > .lead {
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   /* ---------- Subsections ---------- */
   .subsection {
-    margin-top: 48px;
+    margin-top: 56px;
   }
 
   .subsection:first-of-type {
-    margin-top: 40px;
+    margin-top: 48px;
   }
 
   .subsection h3 {
@@ -184,7 +182,7 @@
     letter-spacing: 0.04em;
     color: var(--text);
     text-align: left;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
   }
 
   .subsection p {
@@ -205,7 +203,7 @@
   .subsection .masonry-grid,
   .subsection .even-grid,
   .subsection > .work-photo {
-    margin-top: 28px;
+    margin-top: 32px;
   }
 
   .subsection--essay h3 {
@@ -215,14 +213,13 @@
   /* ---------- Works grid (placeholder / uniform) ---------- */
   .works-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 16px;
   }
 
   .work-placeholder {
     aspect-ratio: 4 / 3;
-    border-radius: 16px;
-    border: 1.5px dashed var(--card-border);
+    border: 1.5px dashed var(--border);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -237,9 +234,8 @@
 
   /* ---------- Main photo (uncropped) + supporting strip ---------- */
   .work-photo {
-    border-radius: 16px;
     overflow: hidden;
-    border: 1px solid var(--card-border);
+    border: 1px solid var(--border);
   }
 
   .work-photo img {
@@ -252,7 +248,7 @@
   .photo-strip {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 14px;
+    gap: 16px;
     margin-top: 16px;
   }
 
@@ -291,7 +287,7 @@
   .even-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 14px;
+    gap: 16px;
   }
 
   .even-grid.cols-2 {
@@ -334,10 +330,9 @@
     position: absolute;
     top: 0;
     left: 0;
-    border-radius: 16px;
     overflow: hidden;
     background: var(--bg-alt);
-    border: 1px solid var(--card-border);
+    border: 1px solid var(--border);
     transition: left 0.3s ease, top 0.3s ease, width 0.3s ease;
   }
 
@@ -370,7 +365,7 @@
     justify-content: center;
     gap: 16px;
     padding: clamp(24px, 6vw, 64px);
-    background: rgba(10, 11, 14, 0.92);
+    background: rgba(10, 10, 10, 0.94);
     backdrop-filter: blur(6px);
     opacity: 0;
     visibility: hidden;
@@ -385,7 +380,6 @@
   .lightbox-image {
     max-width: 100%;
     max-height: 82vh;
-    border-radius: 8px;
     box-shadow: 0 24px 70px rgba(0, 0, 0, 0.5);
     cursor: zoom-out;
   }
@@ -397,9 +391,9 @@
     width: 44px;
     height: 44px;
     border-radius: 50%;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    background: rgba(255, 255, 255, 0.05);
-    color: var(--text);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
     font-size: 1.6rem;
     line-height: 1;
     cursor: pointer;
@@ -407,7 +401,7 @@
   }
 
   .lightbox-close:hover {
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.18);
   }
 
   /* ---------- Text list (company / freelance works) ---------- */
@@ -448,18 +442,17 @@
   .video-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 20px;
-    max-width: 720px;
-    margin: 28px auto 0;
+    gap: 24px;
+    max-width: 760px;
+    margin: 32px auto 0;
   }
 
   .video-card {
     display: block;
     text-decoration: none;
-    border-radius: 16px;
     overflow: hidden;
     background: var(--bg-alt);
-    border: 1px solid var(--card-border);
+    border: 1px solid var(--border);
     transition: transform 0.3s ease, border-color 0.3s ease;
   }
 
@@ -495,7 +488,7 @@
     width: 56px;
     height: 56px;
     border-radius: 50%;
-    background: rgba(10, 11, 14, 0.55);
+    background: rgba(10, 10, 10, 0.55);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -515,11 +508,11 @@
   }
 
   .video-card:hover .play-icon svg {
-    fill: #0a0b0e;
+    fill: #fff;
   }
 
   .video-info {
-    padding: 16px 18px 20px;
+    padding: 18px 20px 22px;
   }
 
   .video-title {
@@ -543,6 +536,8 @@
     color: var(--text-dim);
     font-size: 0.78rem;
     letter-spacing: 0.04em;
+    padding-top: clamp(40px, 6vw, 64px);
+    border-top: 1px solid var(--border);
   }
 
   .footer-links {
@@ -590,11 +585,11 @@
         </p>
       </section>
 
-      <section class="card reveal" id="personal">
+      <section class="section reveal" id="personal">
         <p class="eyebrow">Personal</p>
         <h2>趣味で撮った作品</h2>
         <p class="lead">登山や花火など、個人的な興味から撮影してきた写真です。</p>
-        <div class="masonry-grid">
+        <div class="masonry-grid" style="margin-top: 40px;">
           <div class="work-item" data-ratio="1.777"><img src="images/works/climbing/climbing-01-ainodake.jpg" alt="間ノ岳の稜線"></div>
           <div class="work-item" data-ratio="0.667"><img src="images/works/climbing/climbing-02-houou.jpg" alt="鳳凰三山 雪原を行く登山者"></div>
           <div class="work-item" data-ratio="0.667"><img src="images/works/climbing/climbing-03-kaikoma-1.jpg" alt="甲斐駒ヶ岳 雪山の頂"></div>
@@ -610,7 +605,7 @@
         </div>
       </section>
 
-      <section class="card reveal" id="concept">
+      <section class="section reveal" id="concept">
         <p class="eyebrow">Concept</p>
         <h2>テーマに基づいた作品</h2>
         <p class="lead">テーマを持って撮影・制作してきた作品です。</p>
@@ -647,7 +642,7 @@
         </div>
       </section>
 
-      <section class="card reveal" id="commission">
+      <section class="section reveal" id="commission">
         <p class="eyebrow">Commission</p>
         <h2>個人依頼の写真</h2>
         <p class="lead">個人的に声をかけていただいた作品です。</p>
@@ -674,7 +669,7 @@
         </div>
       </section>
 
-      <section class="card reveal" id="credits">
+      <section class="section reveal" id="credits">
         <p class="eyebrow">Credits</p>
         <h2>携わった作品</h2>
         <p class="lead">映像・撮影の現場で携わった作品です。</p>
@@ -775,11 +770,12 @@
     const items = Array.from(grid.querySelectorAll('.work-item'));
     if (!items.length) return;
 
-    const gap = 14;
+    const gap = 16;
     const width = grid.clientWidth;
-    let columns = 3;
+    let columns = 4;
     if (width <= 560) columns = 1;
     else if (width <= 900) columns = 2;
+    else if (width <= 1300) columns = 3;
 
     const colWidth = (width - gap * (columns - 1)) / columns;
     const colHeights = new Array(columns).fill(0);
