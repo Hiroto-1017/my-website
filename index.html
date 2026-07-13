@@ -311,12 +311,18 @@
     margin-top: 48px;
   }
 
+  .about-sidebar {
+    position: sticky;
+    top: 120px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
   .about-photo {
     aspect-ratio: 4 / 5;
     overflow: hidden;
     background: var(--bg-alt);
-    position: sticky;
-    top: 120px;
   }
 
   .about-photo img {
@@ -324,6 +330,66 @@
     height: 100%;
     object-fit: cover;
     display: block;
+  }
+
+  .profile-facts {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .profile-facts .fact {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .profile-facts dt {
+    color: var(--text-dim);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .profile-facts dd {
+    color: var(--text);
+    font-size: 0.9rem;
+    text-align: right;
+  }
+
+  .profile-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .profile-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    width: fit-content;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.02em;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 2px;
+    transition: color 0.25s ease, border-color 0.25s ease;
+  }
+
+  .profile-links a:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+
+  .profile-links .link-note {
+    color: var(--text-dim);
+    font-size: 0.78rem;
+    margin-bottom: -4px;
   }
 
   .about-layout .section-body {
@@ -335,7 +401,7 @@
       grid-template-columns: 1fr;
     }
 
-    .about-photo {
+    .about-sidebar {
       position: static;
       max-width: 320px;
       margin: 0 auto;
@@ -440,8 +506,38 @@
         <p class="eyebrow">About</p>
         <h2>プロフィール</h2>
         <div class="about-layout">
-          <div class="about-photo">
-            <img src="images/profile/profile.webp" alt="Hiroto Fujinami">
+          <div class="about-sidebar">
+            <div class="about-photo">
+              <img src="images/profile/profile.webp" alt="Hiroto Fujinami">
+            </div>
+            <dl class="profile-facts">
+              <div class="fact">
+                <dt>Name</dt>
+                <dd>藤浪弘登</dd>
+              </div>
+              <div class="fact">
+                <dt>Born</dt>
+                <dd>1998</dd>
+              </div>
+              <div class="fact">
+                <dt>Hometown</dt>
+                <dd>静岡県</dd>
+              </div>
+              <div class="fact">
+                <dt>Based in</dt>
+                <dd>東京都</dd>
+              </div>
+              <div class="fact">
+                <dt>Interests</dt>
+                <dd>登山、植物</dd>
+              </div>
+            </dl>
+            <div class="profile-links">
+              <p class="link-note">機材レンタルについてはこちら</p>
+              <a href="https://tec-s.fun/" target="_blank" rel="noopener noreferrer">機材レンタル Tecs ↗</a>
+              <p class="link-note">SHiPのイベントなどの詳細はこちら</p>
+              <a href="https://ship-shizuoka.com/" target="_blank" rel="noopener noreferrer">SHiP 公式サイト ↗</a>
+            </div>
           </div>
           <div class="section-body">
             <p>
